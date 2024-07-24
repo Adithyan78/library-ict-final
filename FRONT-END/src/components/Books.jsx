@@ -27,7 +27,7 @@ const Books = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/view/books")
+    axios.get("https://library-ict-final-backend.onrender.com/view/books")
       .then(res => {
         const initialRentedStatus = {};
         const initialFavoritedStatus = {};
@@ -78,7 +78,7 @@ const Books = () => {
       }
 
       const hasLiked = favoritedBooks[bookId];
-      const endpoint = hasLiked ? 'http://localhost:3001/unlike' : 'http://localhost:3001/like';
+      const endpoint = hasLiked ? 'https://library-ict-final-backend.onrender.com/unlike' : 'https://library-ict-final-backend.onrender.com/like';
       const response = await axios.post(endpoint, { userId, bookId });
 
       if (response.status === 200) {
@@ -109,7 +109,7 @@ const Books = () => {
     
     try {
       // Fetch book rental status
-      const response = await axios.get(`http://localhost:3001/book/rental-status/${bookId}`);
+      const response = await axios.get(`https://library-ict-final-backend.onrender.com/book/rental-status/${bookId}`);
       const { rented, rentedBy } = response.data;
   
       if (rented) {
@@ -133,7 +133,7 @@ const Books = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:3001/comment', {
+      const response = await axios.post('https://library-ict-final-backend.onrender.com/comment', {
         userId,
         bookId,
         text: commentText
@@ -165,7 +165,7 @@ const Books = () => {
 
   const handleShowComments = async (bookId) => {
     try {
-      const response = await axios.get(`http://localhost:3001/comments/${bookId}`);
+      const response = await axios.get(`https://library-ict-final-backend.onrender.com/comments/${bookId}`);
       const { comments } = response.data;
       // Update state or show comments in a modal/dialog
       console.log('Comments:', comments);
