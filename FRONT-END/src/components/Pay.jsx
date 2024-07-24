@@ -31,7 +31,7 @@ const Pay = () => {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/book/${bookId}`);
+        const response = await axios.get(`https://library-ict-final-backend.onrender.com/book/${bookId}`);
         setBook(response.data);
         if (response.data.rented) {
           setIsPaid(true); // Set `isPaid` to true if the book is already rented
@@ -54,7 +54,7 @@ const Pay = () => {
       }
 
       // Fetch book details to check its rental status
-      const bookResponse = await axios.get(`http://localhost:3001/book/${bookId}`);
+      const bookResponse = await axios.get(`https://library-ict-final-backend.onrender.com/book/${bookId}`);
       const bookData = bookResponse.data;
 
       if (bookData.rented) {
@@ -64,10 +64,10 @@ const Pay = () => {
       }
 
       // Proceed to rent the book
-      await axios.put(`http://localhost:3001/update/book/${bookId}`, { rented: true, rentedBy: userId });
+      await axios.put(`https://library-ict-final-backend.onrender.com/update/book/${bookId}`, { rented: true, rentedBy: userId });
       
       // Update the user's rentedBooks list
-      await axios.post(`http://localhost:3001/rent-book/${userId}/${bookId}`);
+      await axios.post(`https://library-ict-final-backend.onrender.com/rent-book/${userId}/${bookId}`);
 
       alert(`Payment for "${bookData.title}" processed successfully!`);
       setIsPaid(true);
