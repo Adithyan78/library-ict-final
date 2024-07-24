@@ -26,7 +26,7 @@ const Signup2 = () => {
     event.preventDefault();
     if (location.state && location.state.val) {
       axios
-        .put(`http://localhost:3001/edit/user/${location.state.val._id}`, inputs)
+        .put(`https://library-ict-final-backend.onrender.com/edit/user/${location.state.val._id}`, inputs)
         .then((res) => {
           alert(res.data.message);
           navigate('/Viewuser'); // Navigate to the same component after update
@@ -35,7 +35,7 @@ const Signup2 = () => {
         .catch((err) => console.log(err));
     } else {
       axios
-        .post("http://localhost:3001/add/user", inputs)
+        .post("https://library-ict-final-backend.onrender.com/add/user", inputs)
         .then((res) => {
           alert(res.data.message);
           navigate('/Signup'); // Navigate to the same component after adding new user
