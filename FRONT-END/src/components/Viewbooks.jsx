@@ -11,7 +11,7 @@ const Viewbooks = () => {
 
   // Fetch books data on component mount
   useEffect(() => {
-    axios.get("http://localhost:3001/view/books")
+    axios.get("https://library-ict-final-backend.onrender.com/view/books")
       .then(res => {
         setBooks(res.data);
       })
@@ -24,7 +24,7 @@ const Viewbooks = () => {
 
   const clearLikes = async () => {
     try {
-      const response = await axios.delete('http://localhost:3001/clear-likes');
+      const response = await axios.delete('https://library-ict-final-backend.onrender.com/clear-likes');
       alert(response.data.message); // Optional: Alert message from server response
       localStorage.removeItem('likes'); // Clear likes from localStorage on success
     } catch (error) {
@@ -35,7 +35,7 @@ const Viewbooks = () => {
 
   // Function to handle updating rental status of a book
   const handleRentStatusUpdate = (bookId) => {
-    axios.put(`http://localhost:3001/update/book/${bookId}`)
+    axios.put(`https://library-ict-final-backend.onrender.com/update/book/${bookId}`)
       .then(response => {
         const updatedBooks = books.map(book => {
           if (book._id === bookId) {
@@ -52,7 +52,7 @@ const Viewbooks = () => {
 
   // Function to delete a book
   const delValue = (id) => {
-    axios.delete(`http://localhost:3001/remove/book/${id}`)
+    axios.delete(`https://library-ict-final-backend.onrender.com/remove/book/${id}`)
       .then((res) => {
         alert(res.data.message);
         setBooks(books.filter(book => book._id !== id));
