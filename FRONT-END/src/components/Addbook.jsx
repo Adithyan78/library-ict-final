@@ -28,7 +28,7 @@ const Addbook = () => {
     event.preventDefault();
     if (location.state && location.state.val) {
       axios
-        .put(`http://localhost:3001/edit/book/${location.state.val._id}`, inputs)
+        .put(`https://library-ict-final-backend.onrender.com/edit/book/${location.state.val._id}`, inputs)
         .then((res) => {
           alert(res.data.message);
           navigate(''); // Navigate to the same component after update
@@ -37,7 +37,7 @@ const Addbook = () => {
         .catch((err) => console.log(err));
     } else {
       axios
-        .post("http://localhost:3001/add/book", inputs)
+        .post("https://library-ict-final-backend.onrender.com/add/book", inputs)
         .then((res) => {
           alert(res.data.message);
           navigate(''); // Navigate to the same component after adding new book
