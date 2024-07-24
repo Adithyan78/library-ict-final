@@ -16,7 +16,7 @@ const Viewuser = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/view/users")
+    axios.get("https://library-ict-final-backend.onrender.com/view/users")
       .then(res => {
         console.log(res.data); // Check the structure of res.data to match your expectations
         setEmp(res.data); // Assuming res.data is an array of objects
@@ -27,7 +27,7 @@ const Viewuser = () => {
   }, []);
 
   const delValue = (id) => {
-    axios.delete(`http://localhost:3001/remove/user/${id}`)
+    axios.delete(`https://library-ict-final-backend.onrender.com/remove/user/${id}`)
       .then((res) => {
         alert(res.data.message); // Display the message from the response
         setEmp(emp.filter(user => user._id !== id)); // Remove the deleted user from state
