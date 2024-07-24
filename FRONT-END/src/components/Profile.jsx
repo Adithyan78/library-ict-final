@@ -48,13 +48,13 @@ const Profile = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:3001/user/${userId}`);
+        const response = await axios.get(`https://library-ict-final-backend.onrender.com/user/${userId}`);
         setUser(response.data);
 
-        const likedBooksResponse = await axios.get(`http://localhost:3001/liked-books/${userId}`);
+        const likedBooksResponse = await axios.get(`https://library-ict-final-backend.onrender.com/liked-books/${userId}`);
         setLikedBooks(likedBooksResponse.data.likedBooks);
 
-        const rentedBooksResponse = await axios.get(`http://localhost:3001/rented-books/${userId}`);
+        const rentedBooksResponse = await axios.get(`https://library-ict-final-backend.onrender.com/rented-books/${userId}`);
         setRentedBooks(rentedBooksResponse.data.rentedBooks);
 
       } catch (error) {
@@ -72,7 +72,7 @@ const Profile = () => {
 
   const handleSaveProfile = async () => {
     try {
-      const response = await axios.put(`http://localhost:3001/edit/user/${user._id}`, user);
+      const response = await axios.put(`https://library-ict-final-backend.onrender.com/edit/user/${user._id}`, user);
       alert(response.data.message);
       navigate('/Profile');
       setEditMode(false);
@@ -96,7 +96,7 @@ const Profile = () => {
   const handleUnlikeBook = async (bookId) => {
     try {
       const userId = localStorage.getItem('userId');
-      await axios.post(`http://localhost:3001/unlike`, { userId, bookId });
+      await axios.post(`https://library-ict-final-backend.onrender.com/unlike`, { userId, bookId });
       setLikedBooks(likedBooks.filter((book) => book._id !== bookId));
     } catch (error) {
       console.error('Error unliking book:', error);
