@@ -1,12 +1,10 @@
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
 
-
-var mongoose = require('mongoose');
-
-mongoose.connect("mongodb+srv://user2005:userorgin@cluster1.s3wkaoe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1")
-.then(()=>{
-    console.log("connected to db");
-})
-    .catch((error)=>{
-        console.log(error)
-    }
-);
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("✅ Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("❌ MongoDB connection error:", error);
+  });
